@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     ],
 
     openGraph: {
-        title: "Professional Turf & Sports Field Equipment | EGS Equipment",
+        title: "Professional Turf & Sports Field Equipment | Eckert Golf",
         description:
             "Browse professional turf maintenance, field marking, and sports field equipment from industry-leading brands.",
         type: "website",
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
                 url: "/logos/egs-swoosh.png",
                 width: 1200,
                 height: 630,
-                alt: "EGS Equipment",
+                alt: "Eckert Golf",
             },
         ],
     },
 
     twitter: {
         card: "summary_large_image",
-        title: "Professional Turf & Sports Field Equipment | EGS Equipment",
+        title: "Professional Turf & Sports Field Equipment | Eckert Golf",
         description: "Browse professional turf maintenance and sports field equipment from trusted brands.",
         images: ["/logos/egs-swoosh.png"],
     },

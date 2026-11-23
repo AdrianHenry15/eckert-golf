@@ -3,24 +3,24 @@ import PartsForm from "@/components/forms/parts-form";
 import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
-    title: "Parts & Service Support | EGS Equipment",
+    title: "Parts & Service Support | Eckert Golf",
     description:
-        "Request genuine replacement parts, maintenance, repairs, and technical service support from EGS Equipment.",
+        "Request genuine replacement parts, maintenance, repairs, and technical service support from Eckert Golf.",
     alternates: {
         canonical: "/parts-form",
     },
     openGraph: {
-        title: "Parts & Service Support | EGS Equipment",
+        title: "Parts & Service Support | Eckert Golf",
         description:
-            "Request genuine replacement parts, maintenance, repairs, and technical service support from EGS Equipment.",
+            "Request genuine replacement parts, maintenance, repairs, and technical service support from Eckert Golf.",
         type: "website",
         url: "/parts-form",
     },
     twitter: {
         card: "summary",
-        title: "Parts & Service Support | EGS Equipment",
+        title: "Parts & Service Support | Eckert Golf",
         description:
-            "Request genuine replacement parts, maintenance, repairs, and technical service support from EGS Equipment.",
+            "Request genuine replacement parts, maintenance, repairs, and technical service support from Eckert Golf.",
     },
 };
 

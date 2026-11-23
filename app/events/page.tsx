@@ -3,21 +3,21 @@ import { EventSections } from "@/features/events/components/featured-events";
 import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
-    title: "Events | EGS Equipment",
-    description: "View upcoming and past EGS Equipment events, trade shows, demos, and company appearances.",
+    title: "Events | Eckert Golf",
+    description: "View upcoming and past Eckert Golf events, trade shows, demos, and company appearances.",
     alternates: {
         canonical: "/events",
     },
     openGraph: {
-        title: "Events | EGS Equipment",
-        description: "View upcoming and past EGS Equipment events, trade shows, demos, and company appearances.",
+        title: "Events | Eckert Golf",
+        description: "View upcoming and past Eckert Golf events, trade shows, demos, and company appearances.",
         type: "website",
         url: "/events",
     },
     twitter: {
         card: "summary",
-        title: "Events | EGS Equipment",
-        description: "View upcoming and past EGS Equipment events, trade shows, demos, and company appearances.",
+        title: "Events | Eckert Golf",
+        description: "View upcoming and past Eckert Golf events, trade shows, demos, and company appearances.",
     },
 };
 
@@ -27,7 +27,7 @@ export default function EventsPage() {
             <PageHero
                 title="Equipment"
                 accent="events"
-                description="Explore EGS equipment demos, trade shows, and industry appearances."
+                description="Explore Eckert Golf equipment demos, trade shows, and industry appearances."
             />
             <div className="mx-auto max-w-7xl px-6 py-12">
                 <EventSections />

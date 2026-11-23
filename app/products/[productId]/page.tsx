@@ -35,7 +35,7 @@ export async function generateMetadata(props: ProductPageProps): Promise<Metadat
 
     const title = product.name;
     const description =
-        product.description?.slice(0, 160) ?? `Learn more about ${product.name} from EGS Equipment Solutions.`;
+        product.description?.slice(0, 160) ?? `Learn more about ${product.name} from Eckert Golf Solutions.`;
 
     const image = getMetadataImageUrl(product.images?.[0]);
 
@@ -48,7 +48,7 @@ export async function generateMetadata(props: ProductPageProps): Promise<Metadat
             product.brand,
             product.mainCategory,
             ...(product.tags ?? []),
-            "EGS Equipment",
+            "Eckert Golf Equipment",
             "Industrial Equipment",
         ],
 

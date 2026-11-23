@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Accessibility",
-    description: "Get help using the EGS Equipment website or report an accessibility issue.",
+    description: "Get help using the Eckert Golf website or report an accessibility issue.",
     alternates: { canonical: "/accessibility" },
 };
 
@@ -13,8 +13,8 @@ export default function AccessibilityPage() {
             <h1 className="text-4xl font-bold tracking-tight">Accessibility</h1>
             <p>
                 If you have difficulty browsing equipment, finding product information, or submitting a request on this
-                website, contact EGS Equipment for assistance. Third Generation Studios maintains this website and
-                supports technical accessibility fixes for EGS Equipment.
+                website, contact Eckert Golf for assistance. Third Generation Studios maintains this website and
+                supports technical accessibility fixes for Eckert Golf.
             </p>
             <h2 className="text-xl font-semibold">Request assistance</h2>
             <ul className="list-disc space-y-2 pl-5">

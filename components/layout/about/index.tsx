@@ -25,7 +25,7 @@ const About: React.FC = () => {
         >
             <motion.section className="flex flex-col items-center px-6 py-16 md:px-12" variants={staggerContainer}>
                 <motion.h2 className="text-center text-4xl font-bold text-foreground md:text-5xl" variants={fadeIn}>
-                    About EGS Equipment
+                    About Eckert Golf
                 </motion.h2>
 
                 <motion.div className="mt-4 mb-10 h-1 w-16 bg-primary" variants={fadeIn} />
@@ -33,10 +33,10 @@ const About: React.FC = () => {
                 <motion.div variants={fadeIn}>
                     <PromoRow
                         title="Our Journey"
-                        description={`At Eckert Golf Sales (EGS Equipment), we are a leading provider of innovative turf renovation equipment, dedicated to serving the golf, sports field, and fine turf industries.\n\n
+                        description={`At Eckert Golf Sales (Eckert Golf Equipment), we are a leading provider of innovative turf renovation equipment, dedicated to serving the golf, sports field, and fine turf industries.\n\n
                         With a commitment to excellence, we offer a comprehensive range of advanced machinery designed to enhance turf quality. Our products deliver superior performance in aerating, dethatching, mowing, and soil cultivation—ensuring pristine conditions for all turf applications.\n\n
-                        For over 25 years, EGS Equipment has been trusted by turf care professionals. We provide cutting-edge technology, durable designs, and exceptional customer support, working closely with clients to offer tailored solutions, training, and maintenance.\n\n
-                        At EGS Equipment, we are more than just a supplier—we are a partner in achieving beautiful, long-lasting turf that stands the test of time.`}
+                        For over 25 years, Eckert Golf Equipment has been trusted by turf care professionals. We provide cutting-edge technology, durable designs, and exceptional customer support, working closely with clients to offer tailored solutions, training, and maintenance.\n\n
+                        At Eckert Golf Equipment, we are more than just a supplier—we are a partner in achieving beautiful, long-lasting turf that stands the test of time.`}
                         dark
                     />
                 </motion.div>

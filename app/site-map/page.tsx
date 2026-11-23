@@ -6,7 +6,7 @@ import { MAIN_CATEGORIES } from "@/lib/domain/categories";
 
 export const metadata: Metadata = {
     title: "Sitemap",
-    description: "Find EGS Equipment catalog categories, customer resources, and company pages.",
+    description: "Find Eckert Golf catalog categories, customer resources, and company pages.",
     alternates: { canonical: "/site-map" },
 };
 

@@ -4,14 +4,14 @@ import CanonFinanceImage from "@/public/logos/canon-logo.png";
 import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
-    title: "Financing Options | EGS Equipment",
+    title: "Financing Options | Eckert Golf",
     description:
-        "Explore equipment financing options from EGS Equipment, including flexible payment solutions for commercial turf, grounds, and maintenance equipment.",
+        "Explore equipment financing options from Eckert Golf, including flexible payment solutions for commercial turf, grounds, and maintenance equipment.",
     alternates: {
         canonical: "/finance-options",
     },
     openGraph: {
-        title: "Financing Options | EGS Equipment",
+        title: "Financing Options | Eckert Golf",
         description:
             "Explore flexible equipment financing options for commercial turf, grounds, and maintenance equipment.",
         type: "website",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary",
-        title: "Financing Options | EGS Equipment",
+        title: "Financing Options | Eckert Golf",
         description:
             "Explore flexible equipment financing options for commercial turf, grounds, and maintenance equipment.",
     },

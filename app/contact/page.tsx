@@ -4,24 +4,24 @@ import { PageHero } from "@/components/layout/page-hero";
 import { getCatalogProductById } from "@/features/catalog/server/catalog";
 
 export const metadata: Metadata = {
-    title: "Contact EGS Equipment | Sales, Support & Quotes",
+    title: "Contact Eckert Golf | Sales, Support & Quotes",
     description:
-        "Contact EGS Equipment for product questions, equipment quotes, sales support, parts assistance, and general inquiries.",
+        "Contact Eckert Golf for product questions, equipment quotes, sales support, parts assistance, and general inquiries.",
     alternates: {
         canonical: "/contact",
     },
     openGraph: {
-        title: "Contact EGS Equipment | Sales, Support & Quotes",
+        title: "Contact Eckert Golf | Sales, Support & Quotes",
         description:
-            "Get in touch with EGS Equipment for product questions, equipment quotes, sales support, and general inquiries.",
+            "Get in touch with Eckert Golf for product questions, equipment quotes, sales support, and general inquiries.",
         type: "website",
         url: "/contact",
     },
     twitter: {
         card: "summary",
-        title: "Contact EGS Equipment | Sales, Support & Quotes",
+        title: "Contact Eckert Golf | Sales, Support & Quotes",
         description:
-            "Get in touch with EGS Equipment for product questions, equipment quotes, sales support, and general inquiries.",
+            "Get in touch with Eckert Golf for product questions, equipment quotes, sales support, and general inquiries.",
     },
 };
 
@@ -39,7 +39,7 @@ export default async function ContactPage({
         <main className="w-full bg-background text-foreground">
             <PageHero
                 title="Contact"
-                accent="EGS Equipment"
+                accent="Eckert Golf"
                 description="Talk with our team about equipment quotes, product questions, and sales support."
             />
             <ContactForm key={quoteProduct ?? "contact"} quoteProduct={quoteProduct} />

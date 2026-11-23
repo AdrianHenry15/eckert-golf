@@ -82,7 +82,7 @@ export default function Navbar() {
 
                 <div className="flex justify-center">
                     <Link href="/" aria-label="Home">
-                        <Image src={Logo} alt="EGS Equipment" className="w-44 object-contain" priority />
+                        <Image src={Logo} alt="Eckert Golf" className="w-44 object-contain" priority />
                     </Link>
                 </div>
 

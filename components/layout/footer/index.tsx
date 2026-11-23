@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="border-t border-white/15">
                 <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-x-8 gap-y-4 px-5 py-4 sm:px-8">
                     <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
-                        <p>© {new Date().getFullYear()} EGS Equipment</p>
+                        <p>© {new Date().getFullYear()} Eckert Golf</p>
                     </div>
                     <nav
                         aria-label="Website information"

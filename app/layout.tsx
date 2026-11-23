@@ -26,23 +26,23 @@ const geistMono = localFont({
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_ORIGIN),
     title: {
-        default: "EGS Equipment",
-        template: "%s | EGS Equipment",
+        default: "Eckert Golf",
+        template: "%s | Eckert Golf",
     },
     description:
         "Professional turf, sports field, and grounds equipment solutions for flawless greens and expert care.",
-    applicationName: "EGS Equipment",
+    applicationName: "Eckert Golf",
     keywords: [
-        "EGS Equipment",
+        "Eckert Golf",
         "sports turf equipment",
         "grounds equipment",
         "golf course equipment",
         "field maintenance equipment",
         "turf care",
     ],
-    authors: [{ name: "EGS Equipment" }],
-    creator: "EGS Equipment",
-    publisher: "EGS Equipment",
+    authors: [{ name: "Eckert Golf" }],
+    creator: "Eckert Golf",
+    publisher: "Eckert Golf",
     icons: {
         icon: "/logos/egs-swoosh.png",
         shortcut: "/logos/egs-swoosh.png",
@@ -52,8 +52,8 @@ export const metadata: Metadata = {
         type: "website",
         locale: "en_US",
         url: "/",
-        siteName: "EGS Equipment",
-        title: "EGS Equipment",
+        siteName: "Eckert Golf",
+        title: "Eckert Golf",
         description:
             "Professional turf, sports field, and grounds equipment solutions for flawless greens and expert care.",
         images: [
@@ -61,13 +61,13 @@ export const metadata: Metadata = {
                 url: "/logos/egs-swoosh.png",
                 width: 1200,
                 height: 630,
-                alt: "EGS Equipment",
+                alt: "Eckert Golf",
             },
         ],
     },
     twitter: {
         card: "summary_large_image",
-        title: "EGS Equipment",
+        title: "Eckert Golf",
         description:
             "Professional turf, sports field, and grounds equipment solutions for flawless greens and expert care.",
         images: ["/logos/egs-swoosh.png"],
@@ -95,7 +95,7 @@ export default async function RootLayout({
                             "@context": "https://schema.org",
                             "@type": "Organization",
                             name: "Eckert Golf Sales, Inc.",
-                            alternateName: "EGS Equipment",
+                            alternateName: "Eckert Golf",
                             url: SITE_ORIGIN,
                             telephone: "+1-407-629-7968",
                             address: {
