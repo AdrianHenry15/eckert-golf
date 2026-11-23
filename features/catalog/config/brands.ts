@@ -13,12 +13,7 @@ export const brands = [
         name: "Dennis",
         description:
             "Explore Dennis reel mowers and turf maintenance systems. Start with the ES860 or browse the G-series cassette mower listing. Ask EGS to confirm cassette compatibility for your specific mower before ordering.",
-        featured: [
-            "mower-2", // ES860
-            "mower-1", // Existing G-Series listing, including G860
-            "dennis-es34r",
-            "dennis-pro34r",
-        ],
+        featured: ["mower-2", "dennis-g860", "dennis-es34r", "dennis-pro34r"],
     },
     {
         slug: "pitchmark",

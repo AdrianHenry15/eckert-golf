@@ -19,7 +19,7 @@ const cassetteOptions = [
     },
 ];
 
-const supportedProductIds = ["mower-1", "mower-2"];
+const supportedProductIds = ["mower-1", "mower-2", "dennis-g860"];
 
 interface DennisCassettesProps {
     productId?: string;
@@ -44,7 +44,7 @@ export default function DennisCassettes({ productId }: DennisCassettesProps) {
             className="scroll-mt-28 rounded-2xl border border-border bg-card p-6 text-card-foreground sm:p-8"
         >
             <div className="max-w-3xl">
-                <p className="text-sm font-semibold uppercase tracking-wider text-primary">Dennis cassette systems</p>
+                <p className="text-sm font-semibold tracking-wider text-primary uppercase">Dennis cassette systems</p>
 
                 <h2 id="dennis-cassettes-heading" className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl">
                     More ways to maintain your turf

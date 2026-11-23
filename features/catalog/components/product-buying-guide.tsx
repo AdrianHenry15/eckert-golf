@@ -40,7 +40,7 @@ function getBuyingQuestions(product: ProductType): string[] {
     const tags: readonly string[] = product.tags;
 
     // These existing listings represent cassette-system mowers.
-    if (product.brand === "dennis" && ["mower-1", "mower-2"].includes(product.id)) {
+    if (product.brand === "dennis" && ["mower-1", "mower-2", "dennis-g860"].includes(product.id)) {
         return [
             "Which cutting width and cylinder configuration suit your surface?",
             "Which maintenance cassettes are available for your exact mower model?",

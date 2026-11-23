@@ -8,14 +8,15 @@ import { ProductFeatures } from "../../product-features";
 import { ProductSpecifications } from "../../product-specifications";
 import { ProductType } from "@/features/catalog/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
+import G860Image from "@/public/products/natural/dennis/g860.png";
 
 export const MowerProducts: ProductType[] = [
     {
         id: "mower-1",
-        name: "G660, G760, G860",
-        description: "Interchangeable Cassette System Mowers",
+        name: "Dennis G-Series Cassette Mower Range",
+        description: "Explore the Dennis G660, G760, and G860 interchangeable cassette mower range.",
         mainCategory: "natural_turf",
-        tags: ["reel_mower", "rotary_mower", "natural_turf"],
+        tags: ["reel_mower", "natural_turf"],
         images: [GSeriesImg],
         brand: EquipmentBrand.DENNIS,
         manual: "https://dennis-api.wsio-api.com/uploads/manuals_G_SERIES_CASSETTE_MOWER_d704cb9b31.pdf",
@@ -34,7 +35,7 @@ export const MowerProducts: ProductType[] = [
         name: "Dennis ES860 Battery-Powered Reel Mower",
         description: "Battery powered mower and Maintenance system",
         mainCategory: "natural_turf",
-        tags: ["reel_mower", "rotary_mower", "natural_turf"],
+        tags: ["reel_mower", "natural_turf"],
         images: [ES860Img],
         brand: EquipmentBrand.DENNIS,
         manual: "https://dennis-api.wsio-api.com/uploads/manuals_ES_860_ES_760_5a49c756a8.pdf",
@@ -129,6 +130,39 @@ export const MowerProducts: ProductType[] = [
                     model: "Pro34R",
                     code: "D095",
                     action: "Rotary mowing and turf clean-up",
+                    operating_width: "860 mm / 34 inches",
+                    power_source_output: "Honda GX200 petrol engine",
+                },
+            },
+        },
+    },
+    {
+        id: "dennis-g860",
+        status: "published",
+        name: "Dennis G860 Petrol Cylinder Mower",
+        description:
+            "Professional 860 mm cylinder mower with interchangeable cassettes for natural turf cutting and maintenance.",
+        mainCategory: "natural_turf",
+        tags: ["reel_mower", "natural_turf"],
+        brand: EquipmentBrand.DENNIS,
+        images: [G860Image],
+        manufacturerUrl: "https://dennisuk.com/g660-g760-and-g860",
+        manual: "https://dennis-api.wsio-api.com/uploads/SP_20004_EN_REV_7_G_Series_Operator_Manual_English_4ec27a1532.pdf",
+        details: {
+            specs_description:
+                "The Dennis G860 is the 34-inch model in the G-Series cassette mower range. Its interchangeable system supports mowing and additional turf maintenance tasks using compatible cassettes. Ask EGS to confirm cylinder selection, cassette compatibility, included equipment, and delivery arrangements.",
+            features: [
+                "860 mm / 34-inch cutting width.",
+                "Honda GX200 petrol engine.",
+                "Interchangeable cassette system.",
+                "Compatible cassette options for scarifying, verticutting, and brushing.",
+                "Three-section aluminium rear roller.",
+            ],
+            specifications: {
+                type: "standard",
+                data: {
+                    model: "G860",
+                    action: "Cylinder mowing and cassette-based turf maintenance",
                     operating_width: "860 mm / 34 inches",
                     power_source_output: "Honda GX200 petrol engine",
                 },

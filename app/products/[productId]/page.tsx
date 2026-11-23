@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { brands } from "@/features/catalog/config/brands";
 import { SITE_ORIGIN } from "@/lib/site";
 import { getRelatedProducts } from "@/features/catalog/helpers/get-related-products";
+
 interface ProductPageProps {
     params: Promise<{
         productId: string;
@@ -112,7 +113,9 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
             <div className="mx-auto w-full max-w-7xl space-y-10 px-6 py-10 sm:py-14">
                 <Product product={product} />
 
-                {["mower-1", "mower-2"].includes(product.id) && <DennisCassettes productId={product.id} />}
+                {["mower-1", "mower-2", "dennis-g860"].includes(product.id) && (
+                    <DennisCassettes productId={product.id} />
+                )}
 
                 <ProductBuyingGuide product={product} />
 
