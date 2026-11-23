@@ -56,7 +56,7 @@ import { LineMarkerMachineSpecifications } from "../../line-marker-specification
 export const LineMarkerMachineProducts: ProductType[] = [
     {
         id: "lmm-1",
-        name: "Hybrid",
+        name: "Pitchmark Hybrid Line Marking Machine",
         description: `Our premium Hybrid line marking machine is designed with and for sports turf professionals, perfect for use on stadium pitches.`,
         mainCategory: "line_marker",
         tags: ["accessory", "machine", "spray_machine"],

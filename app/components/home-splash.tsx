@@ -16,19 +16,31 @@ interface PageHeroProps {
     accent: string;
     description: string;
     action?: { href: string; label: string };
-    img?: StaticImageData;
+    img?: StaticImageData | string | undefined;
+    imageAlt?: string | undefined;
+    imagePosition?: string | undefined;
 }
 
-export function PageHero({ title, accent, description, action, img }: PageHeroProps) {
+export function PageHero({
+    title,
+    accent,
+    description,
+    action,
+    img,
+    imageAlt = "Professional turf maintenance equipment on a sports field",
+    imagePosition = "center",
+}: PageHeroProps) {
     return (
         <section className="relative isolate w-full overflow-hidden bg-brand-black text-white">
             <Image
                 src={img ?? HeroImage}
-                alt="A groundskeeper operating turf maintenance equipment on a sports field"
+                alt={imageAlt}
                 fill
                 preload
                 sizes="100vw"
-                className="-z-20 object-cover object-[68%_center] md:object-center"
+                quality={80}
+                className="-z-20 object-cover"
+                style={{ objectPosition: imagePosition }}
             />
             <div className="absolute inset-0 -z-10 bg-brand-black/65 md:bg-transparent md:bg-linear-to-r md:from-brand-black md:via-brand-black/80 md:to-brand-black/15" />
             <div

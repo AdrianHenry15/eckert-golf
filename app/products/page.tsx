@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { PageHero } from "@/app/components/home-splash";
 
@@ -61,6 +62,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 accent="equipment"
                 description="Browse professional turf, sports field, and grounds maintenance equipment."
             />
+            <nav aria-label="Browse equipment brands" className="mx-auto max-w-screen-2xl px-6 py-4">
+                <Link href="/brands" className="font-semibold text-primary underline underline-offset-4">
+                    Shop by brand
+                </Link>
+            </nav>
             <div className="mx-auto flex w-full max-w-screen-2xl">
                 <MobileSidebarFilter />
                 <FilterSidebar />

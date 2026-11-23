@@ -2,7 +2,13 @@ import type { Metadata } from "next";
 import Product from "@/app/products/[productId]/components/product";
 import RelatedProducts from "./components/related-products";
 import { allProducts } from "@/lib/products/list/product-list";
+import { notFound } from "next/navigation";
+import { brands } from "@/lib/products/brands";
+import { SITE_ORIGIN } from "@/lib/site";
 import { StaticImageData } from "next/image";
+import DennisCassettes from "@/components/products/dennis-cassettes";
+import Link from "next/link";
+import ProductBuyingGuide from "@/components/products/product-buying-guide";
 
 interface ProductPageProps {
     params: Promise<{
@@ -28,7 +34,7 @@ export async function generateMetadata(props: ProductPageProps): Promise<Metadat
         };
     }
 
-    const title = `${product.name} | EGS Equipment`;
+    const title = product.name;
     const description =
         product.description?.slice(0, 160) ?? `Learn more about ${product.name} from EGS Equipment Solutions.`;
 
@@ -78,9 +84,40 @@ export async function generateMetadata(props: ProductPageProps): Promise<Metadat
 }
 export default async function ProductPage({ params }: { params: Promise<{ productId: string }> }) {
     const { productId } = await params;
+    const product = allProducts.find((item) => item.id === productId);
+    if (!product) notFound();
+    const brand = brands.find((item) => item.key === product.brand);
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: product.name,
+        description: product.description,
+        url: `${SITE_ORIGIN}/products/${product.id}`,
+        brand: { "@type": "Brand", name: brand?.name ?? product.brand },
+        image: product.images.map((image) => new URL(typeof image === "string" ? image : image.src, SITE_ORIGIN).href),
+    };
     return (
         <div className="flex relative flex-col items-center w-full">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+            />
             <Product productId={productId} />
+            {["mower-1", "mower-2"].includes(productId) && (
+                <div className="mx-auto w-full max-w-7xl px-6 py-12">
+                    <DennisCassettes productId={productId} />
+
+                    <Link
+                        href="/brands/dennis#dennis-cassettes"
+                        className="mt-5 inline-block text-sm font-semibold text-primary underline underline-offset-4"
+                    >
+                        Explore Dennis equipment and cassette options
+                    </Link>
+                </div>
+            )}
+            <div className="mx-auto w-full max-w-7xl px-6 pb-12">
+                <ProductBuyingGuide product={product} />
+            </div>
             <RelatedProducts productId={productId} />
         </div>
     );

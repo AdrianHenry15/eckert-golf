@@ -29,7 +29,7 @@ export const MowerProducts: ProductType[] = [
     },
     {
         id: "mower-2",
-        name: "ES860",
+        name: "Dennis ES860 Battery-Powered Reel Mower",
         description: "Battery powered mower and Maintenance system",
         mainCategory: "natural_turf",
         tags: ["reel_mower", "rotary_mower", "natural_turf"],

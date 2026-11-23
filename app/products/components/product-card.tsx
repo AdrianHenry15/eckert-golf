@@ -80,7 +80,7 @@ export default function ProductCard({
             </Link>
 
             <Link
-                href="/contact"
+                href={{ pathname: "/contact", query: { product: product.id } }}
                 prefetch={false}
                 className="
           flex items-center justify-center

@@ -8,6 +8,7 @@ import SynProLogo from "@/public/logos/synpro.webp";
 import HarrodLogo from "@/public/logos/harrod-sport-logo.png";
 import PitchmarkLogo from "@/public/logos/pitchmark-logo.png";
 import BuffaloLogo from "@/public/logos/buffalo-turbine.jpg";
+import { brands } from "@/lib/products/brands";
 import { EquipmentBrand } from "@/lib/types/brands";
 
 interface ILogos {
@@ -36,7 +37,11 @@ export default function PoweredBy() {
                     {logos.map((logo) => (
                         <li key={logo.alt}>
                             <Link
-                                href={`/products?brand=${logo.brand}`}
+                                href={
+                                    brands.find((brand) => brand.key === logo.brand)
+                                        ? `/brands/${brands.find((brand) => brand.key === logo.brand)!.slug}`
+                                        : `/products?brand=${logo.brand}`
+                                }
                                 aria-label={`View ${logo.alt} equipment`}
                                 className="group block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
                             >

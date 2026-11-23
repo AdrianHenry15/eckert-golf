@@ -93,6 +93,27 @@ export default async function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}
             >
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Organization",
+                            name: "Eckert Golf Sales, Inc.",
+                            alternateName: "EGS Equipment",
+                            url: SITE_ORIGIN,
+                            telephone: "+1-407-629-7968",
+                            address: {
+                                "@type": "PostalAddress",
+                                streetAddress: "5415 Lake Howell Road #190",
+                                addressLocality: "Winter Park",
+                                addressRegion: "FL",
+                                postalCode: "32792",
+                                addressCountry: "US",
+                            },
+                        }).replace(/</g, "\\u003c"),
+                    }}
+                />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <Toaster />
                     <a

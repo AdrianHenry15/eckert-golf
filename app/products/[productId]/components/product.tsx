@@ -342,27 +342,45 @@ const Product = ({ productId }: IProductProps) => {
 
                     {renderSpecifications()}
 
-                    {product.productSheet && (
-                        <div className="mt-6 flex flex-wrap gap-4 text-sm font-semibold">
-                            <a
-                                href={product.productSheet}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-primary underline underline-offset-4"
-                            >
-                                Product sheet (PDF)
-                            </a>
-                            {product.manual && (
-                                <a
-                                    href={product.manual}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-primary underline underline-offset-4"
-                                >
-                                    Operator manual (PDF)
-                                </a>
-                            )}
-                        </div>
+                    {(product.productSheet || product.manual) && (
+                        <section
+                            aria-labelledby="product-documents-heading"
+                            className="mt-6 rounded-lg border border-border bg-card p-5"
+                        >
+                            <h2 id="product-documents-heading" className="text-xl font-semibold text-foreground">
+                                Product documents
+                            </h2>
+
+                            <ul className="mt-4 flex flex-wrap gap-5 text-sm font-semibold">
+                                {product.productSheet && (
+                                    <li>
+                                        <a
+                                            href={product.productSheet}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary underline underline-offset-4"
+                                        >
+                                            Product sheet (PDF)
+                                            <span className="sr-only"> — opens in a new tab</span>
+                                        </a>
+                                    </li>
+                                )}
+
+                                {product.manual && (
+                                    <li>
+                                        <a
+                                            href={product.manual}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-primary underline underline-offset-4"
+                                        >
+                                            Operator manual (PDF)
+                                            <span className="sr-only"> — opens in a new tab</span>
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
+                        </section>
                     )}
                 </div>
             </div>

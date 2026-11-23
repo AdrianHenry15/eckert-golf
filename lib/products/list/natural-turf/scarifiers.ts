@@ -50,7 +50,7 @@ export const ScarifierProducts: ProductType[] = [
         mainCategory: "natural_turf",
         tags: ["scarifier", "natural_turf"],
         images: [RotoRakeImg],
-        brand: EquipmentBrand.SYNPRO,
+        brand: EquipmentBrand.SISIS,
         manual: "https://sisis-api.wsio-api.com/uploads/manuals_Rotorake_600_HD_9b10c22d0a.pdf",
         details: {
             specs_description: ProductSpecDescriptions.rotorake_600_hd,
