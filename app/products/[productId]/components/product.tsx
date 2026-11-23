@@ -11,7 +11,6 @@ import {
     LineMarkerPaintSpecificationsType,
     ProductSpecificationsType,
 } from "@/lib/types/product";
-import { GoalSpecifications } from "@/lib/products/list/goals/goal-specifications";
 
 const COLOR_MAP: Record<string, string> = {
     white: "#ffffff",
@@ -109,7 +108,7 @@ const Product = ({ productId }: IProductProps) => {
                 <div className="mt-4">
                     <h5 className="text-lg font-semibold text-foreground">Inclusions</h5>
                     {Array.isArray(data.inclusions) ? (
-                        <ul className="list-disc ml-5 text-sm text-foreground">
+                        <ul className="ml-5 list-disc text-sm text-foreground">
                             {data.inclusions.map((i, idx) => (
                                 <li key={idx}>{i}</li>
                             ))}
@@ -242,7 +241,7 @@ const Product = ({ productId }: IProductProps) => {
                 {hasSizes && (
                     <div className="mt-4">
                         <h5 className="text-lg font-semibold text-foreground">Available Sizes</h5>
-                        <ul className="ml-5 mt-2 list-disc text-sm text-foreground">
+                        <ul className="mt-2 ml-5 list-disc text-sm text-foreground">
                             {data.sizes!.map((size, idx) => (
                                 <li key={idx}>{size}</li>
                             ))}
@@ -253,7 +252,7 @@ const Product = ({ productId }: IProductProps) => {
                 {hasFeatures && (
                     <div className="mt-4">
                         <h5 className="text-lg font-semibold text-foreground">Features</h5>
-                        <ul className="ml-5 mt-2 list-disc text-sm text-foreground">
+                        <ul className="mt-2 ml-5 list-disc text-sm text-foreground">
                             {data.features!.map((feature, idx) => (
                                 <li key={idx}>{feature}</li>
                             ))}
@@ -264,7 +263,7 @@ const Product = ({ productId }: IProductProps) => {
                 {hasBenefits && (
                     <div className="mt-4">
                         <h5 className="text-lg font-semibold text-foreground">Benefits</h5>
-                        <ul className="ml-5 mt-2 list-disc text-sm text-foreground">
+                        <ul className="mt-2 ml-5 list-disc text-sm text-foreground">
                             {data.benefits!.map((benefit, idx) => (
                                 <li key={idx}>{benefit}</li>
                             ))}
@@ -275,7 +274,7 @@ const Product = ({ productId }: IProductProps) => {
                 {hasIncluded && (
                     <div className="mt-4">
                         <h5 className="text-lg font-semibold text-foreground">What’s Included</h5>
-                        <ul className="ml-5 mt-2 list-disc text-sm text-foreground">
+                        <ul className="mt-2 ml-5 list-disc text-sm text-foreground">
                             {data.included!.map((item, idx) => (
                                 <li key={idx}>{item}</li>
                             ))}
@@ -313,7 +312,7 @@ const Product = ({ productId }: IProductProps) => {
                     <ChevronLeftIcon className="w-10 p-2 text-foreground" />
                 </Link>
 
-                <div className="xl:w-1/2 flex justify-center">
+                <div className="flex justify-center xl:w-1/2">
                     <ImageScroller images={product.images} alt={product.name} />
                 </div>
 
@@ -332,7 +331,7 @@ const Product = ({ productId }: IProductProps) => {
                     {product.details.features?.length ? (
                         <div className="mt-6">
                             <h2 className="text-xl font-semibold text-foreground">Features</h2>
-                            <ul className="ml-5 mt-2 list-disc text-sm text-foreground">
+                            <ul className="mt-2 ml-5 list-disc text-sm text-foreground">
                                 {product.details.features.map((f, i) => (
                                     <li key={i}>{f}</li>
                                 ))}

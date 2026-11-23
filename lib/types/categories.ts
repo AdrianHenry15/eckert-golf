@@ -1,7 +1,7 @@
 // Main categories (domain truth)
 export type MainCategory = "" | "synthetic_turf" | "natural_turf" | "line_marker" | "goal" | "debris_blower";
 
-export type TurfTag =
+type TurfTag =
     | "brush"
     | "rake"
     | "spreader"
@@ -15,9 +15,9 @@ export type TurfTag =
     | "aerator";
 
 // SPORTS
-export type SportTag = "american_football" | "golf" | "soccer" | "baseball" | "softball" | "lacrosse";
+type SportTag = "american_football" | "golf" | "soccer" | "baseball" | "softball" | "lacrosse";
 
-export type SportsEquipmentTag =
+type SportsEquipmentTag =
     | "goal"
     | "post"
     | "net"
@@ -36,15 +36,15 @@ export type SportsEquipmentTag =
     | "ladder"
     | "training";
 
-export type SportsLocationTag = "synthetic_turf" | "natural_turf" | "indoor";
+type SportsLocationTag = "synthetic_turf" | "natural_turf" | "indoor";
 
-export type SportsMaterialTag = "aluminum" | "netting" | "pvc" | "rubber" | "steel";
+type SportsMaterialTag = "aluminum" | "netting" | "pvc" | "rubber" | "steel";
 
-export type SportsAgeTag = "over_18" | "u15_to_u18" | "u13_to_u14" | "u11_to_u12" | "u7_to_u10";
+type SportsAgeTag = "over_18" | "u15_to_u18" | "u13_to_u14" | "u11_to_u12" | "u7_to_u10";
 
-export type SoccerGoalCategoryTag = "kids" | "metal" | "plastic" | "mini";
-export type SoccerGoalNetTag = "junior" | "indoor";
-export type GoalSubtypeTag =
+type SoccerGoalCategoryTag = "kids" | "metal" | "plastic" | "mini";
+type SoccerGoalNetTag = "junior" | "indoor";
+type GoalSubtypeTag =
     | "freestanding"
     | "folding"
     | "hinged"
@@ -56,13 +56,13 @@ export type GoalSubtypeTag =
     | "socketed";
 
 // Line Markers
-export type LineMarkerTag = "paint" | "machine" | "accessory";
-export type LineMarkerPaintType = "ready_to_use" | "concentrate" | "artificial_grass";
-export type LineMarkerPaintQuality = "premium" | "professional" | "standard" | "low";
-export type LineMarkerMachineType = "spray_machine" | "wheel_to_wheel";
-export type LineMarkerAccessoryType = "field_accessory" | "machine_accessory" | "spare";
+type LineMarkerTag = "paint" | "machine" | "accessory";
+type LineMarkerPaintType = "ready_to_use" | "concentrate" | "artificial_grass";
+type LineMarkerPaintQuality = "premium" | "professional" | "standard" | "low";
+type LineMarkerMachineType = "spray_machine" | "wheel_to_wheel";
+type LineMarkerAccessoryType = "field_accessory" | "machine_accessory" | "spare";
 
-export type MowerSubtypeTag = "reel_mower" | "rotary_mower" | "hover_mower";
+type MowerSubtypeTag = "reel_mower" | "rotary_mower" | "hover_mower";
 
 export type Tag =
     | TurfTag

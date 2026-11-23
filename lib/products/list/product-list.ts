@@ -33,5 +33,9 @@ const productCollections = [
     LineMarkerMachineProducts,
 ];
 
-// All products (flattened)
-export const allProducts = productCollections.flat();
+// Includes unfinished records for future editing and migration.
+const productRecords = productCollections.flat();
+
+// Existing storefront imports continue to work.
+// Draft and archived products stay out of the public catalog.
+export const allProducts = productRecords.filter((product) => (product.status ?? "published") === "published");

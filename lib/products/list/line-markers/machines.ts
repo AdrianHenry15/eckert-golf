@@ -49,8 +49,6 @@ import Classic5Img from "@/public/products/line-markers/machines/classic/Classic
 
 import { ProductType } from "@/lib/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
-import { ProductSpecDescriptions } from "../../product-spec-descriptions";
-import { ProductFeatures } from "../../product-features";
 import { LineMarkerMachineSpecifications } from "../../line-marker-specifications/machine-specifications";
 
 export const LineMarkerMachineProducts: ProductType[] = [

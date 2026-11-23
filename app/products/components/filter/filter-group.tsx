@@ -37,7 +37,7 @@ const itemVariants = {
     },
 } as const;
 
-export type FilterOption = {
+type FilterOption = {
     label: string;
     value: string;
 };

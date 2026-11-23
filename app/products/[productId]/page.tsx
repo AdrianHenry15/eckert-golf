@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Product from "@/app/products/[productId]/components/product";
 import RelatedProducts from "./components/related-products";
-import { allProducts } from "@/lib/products/list/product-list";
 import { notFound } from "next/navigation";
 import { brands } from "@/lib/products/brands";
 import { SITE_ORIGIN } from "@/lib/site";
@@ -9,6 +8,7 @@ import { StaticImageData } from "next/image";
 import DennisCassettes from "@/components/products/dennis-cassettes";
 import Link from "next/link";
 import ProductBuyingGuide from "@/components/products/product-buying-guide";
+import { getCatalogProductById } from "@/lib/products/catalog";
 
 interface ProductPageProps {
     params: Promise<{
@@ -25,7 +25,7 @@ const getMetadataImageUrl = (image?: string | StaticImageData): string | undefin
 export async function generateMetadata(props: ProductPageProps): Promise<Metadata> {
     const { productId } = await props.params;
 
-    const product = allProducts.find((p) => p.id === productId);
+    const product = await getCatalogProductById(productId);
 
     if (!product) {
         return {
@@ -84,8 +84,10 @@ export async function generateMetadata(props: ProductPageProps): Promise<Metadat
 }
 export default async function ProductPage({ params }: { params: Promise<{ productId: string }> }) {
     const { productId } = await params;
-    const product = allProducts.find((item) => item.id === productId);
+
+    const product = await getCatalogProductById(productId);
     if (!product) notFound();
+
     const brand = brands.find((item) => item.key === product.brand);
     const structuredData = {
         "@context": "https://schema.org",

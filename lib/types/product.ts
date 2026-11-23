@@ -16,16 +16,19 @@ export type ProductType = {
     productSheet?: string;
     usedBy?: Clients;
     popular?: boolean;
+    status?: "draft" | "published" | "archived";
+    manufacturerUrl?: string;
+    verifiedAt?: string;
 };
 
-export type EngineSpecifications = {
+type EngineSpecifications = {
     engine?: string;
     engine_petrol?: string;
     tractor_power_requirement?: string;
     power_unit_requirement?: string;
 };
 
-export type Dimensions = {
+type Dimensions = {
     width?: string;
     altWidth?: string;
     length?: string;
@@ -35,21 +38,14 @@ export type Dimensions = {
     tire_size?: string;
 };
 
-export type SpecificationKind =
-    | "standard"
-    | "line_marker_paint"
-    | "line_marker_machine"
-    | "line_marker_accessory"
-    | "goals";
-
-export type BrushSpecifications = {
+type BrushSpecifications = {
     brushes?: string;
     number_of_brushes?: string;
     oscillating_brush?: string;
     rear_brush?: string;
 };
 
-export type CuttingSpecifications = {
+type CuttingSpecifications = {
     cutting_width?: string;
     height_of_cut?: string;
     working_width?: string;
@@ -127,38 +123,38 @@ export type GoalSpecificationsType = {
     specifications?: string;
 };
 
-export type PackageItemType = {
+type PackageItemType = {
     name: string;
     quantity: number;
     description: string;
 };
 
-export type StandardSpecifications = {
+type StandardSpecifications = {
     type: "standard";
     data: ProductSpecificationsType;
 };
 
-export type LineMarkerPaintSpecifications = {
+type LineMarkerPaintSpecifications = {
     type: "line_marker_paint";
     data: LineMarkerPaintSpecificationsType;
 };
 
-export type LineMarkerMachineSpecifications = {
+type LineMarkerMachineSpecifications = {
     type: "line_marker_machine";
     data: LineMarkerMachineSpecificationsType;
 };
 
-export type LineMarkerAccessorySpecifications = {
+type LineMarkerAccessorySpecifications = {
     type: "line_marker_accessory";
     data: LineMarkerAccessorySpecificationsType;
 };
 
-export type GoalSpecifications = {
+type GoalSpecifications = {
     type: "goals";
     data: GoalSpecificationsType;
 };
 
-export type Details = {
+type Details = {
     specs_description?: string;
     features?: string[];
     specifications?:

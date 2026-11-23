@@ -2,9 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/app/globals.css";
 
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
-
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ModalRoot from "@/components/modals/modal-root";
@@ -86,8 +83,6 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const isDraftMode = (await draftMode()).isEnabled;
-
     return (
         <html lang="en" suppressHydrationWarning>
             <body
@@ -128,7 +123,6 @@ export default async function RootLayout({
                     </div>
                     <ModalRoot />
                     <CookieConsentCard />
-                    {isDraftMode && <VisualEditing />}
                     <GlobalOptionsWidget />
                     <Footer />
                 </ThemeProvider>

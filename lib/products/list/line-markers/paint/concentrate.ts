@@ -3,8 +3,6 @@ import LineOutImg from "@/public/products/line-markers/paint/concentrate/Line-Ou
 import LumenImg from "@/public/products/line-markers/paint/concentrate/Lumen-Box-10L-Brown-Main-View.webp";
 import ClublineImg1 from "@/public/products/line-markers/paint/concentrate/clubline/Clubline-10L-1.webp";
 import ClublineImg2 from "@/public/products/line-markers/paint/concentrate/clubline/Clubline-750L-IBC-WEB.webp";
-import { ProductSpecDescriptions } from "../../../product-spec-descriptions";
-import { ProductFeatures } from "../../../product-features";
 import { ProductType } from "@/lib/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
 import { LineMarkerPaintSpecifications } from "@/lib/products/line-marker-specifications/paint-specifications";

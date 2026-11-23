@@ -1,5 +1,5 @@
 import { ProductSpecificationsType } from "../types/product";
-import { MachineProductKey, ProductKey } from "./product-keys";
+import { MachineProductKey } from "./product-keys";
 
 export const ProductSpecifications: Record<MachineProductKey, ProductSpecificationsType> = {
     javelin: {

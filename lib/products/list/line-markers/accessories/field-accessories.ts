@@ -31,9 +31,6 @@ import GuideReelImg from "@/public/products/line-markers/accessories/field-acces
 import ProIMTImg from "@/public/products/line-markers/accessories/field-accessories/professional-marking-kit/Professional-Initial-Marking-Kit.webp";
 import KitBagImg from "@/public/products/line-markers/accessories/field-accessories/professional-marking-kit/Pitchmark-Kit-Bag-Web.webp";
 
-import { ProductSpecDescriptions } from "../../../product-spec-descriptions";
-import { ProductFeatures } from "../../../product-features";
-import { ProductSpecifications } from "../../../product-specifications";
 import { ProductType } from "@/lib/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
 import { LineMarkerAccessorySpecifications } from "@/lib/products/line-marker-specifications/accessory-specifications";

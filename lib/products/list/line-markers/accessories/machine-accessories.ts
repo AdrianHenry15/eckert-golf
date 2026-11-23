@@ -3,8 +3,6 @@ import EcoClean10LImg from "@/public/products/line-markers/accessories/machine-a
 import ServiceKitImg from "@/public/products/line-markers/accessories/machine-accessories/Service-Kit.webp";
 import PaintTank25LImg from "@/public/products/line-markers/accessories/machine-accessories/Standard-25L-Paint-Tank.webp";
 import ConcentrateImg from "@/public/products/line-markers/accessories/machine-accessories/mixing-kit-for-concentrate-line-marking-paints.webp";
-import { ProductSpecDescriptions } from "../../../product-spec-descriptions";
-import { ProductFeatures } from "../../../product-features";
 import { ProductType } from "@/lib/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
 import { LineMarkerAccessorySpecifications } from "@/lib/products/line-marker-specifications/accessory-specifications";

@@ -112,8 +112,3 @@ export type LineMarkerAccessoryProductKeys =
     | "spray_marker_service_kit"
     | "ecoclean_10l"
     | "concentrate_mixing_kit";
-export type ProductKey =
-    | MachineProductKey
-    | LineMarkerPaintProductKeys
-    | LineMarkerMachineProductKeys
-    | LineMarkerAccessoryProductKeys;

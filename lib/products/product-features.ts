@@ -1,4 +1,4 @@
-import { MachineProductKey, ProductKey } from "./product-keys";
+import { MachineProductKey } from "./product-keys";
 
 export const ProductFeatures: Record<MachineProductKey, string[]> = {
     // Machines

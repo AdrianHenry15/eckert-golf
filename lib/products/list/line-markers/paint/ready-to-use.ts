@@ -2,8 +2,6 @@ import EcolineImg from "@/public/products/line-markers/paint/ready-to-use/Ecolin
 import DirectImg from "@/public/products/line-markers/paint/ready-to-use/Direct-10L-1.webp";
 import EdgeboxImg from "@/public/products/line-markers/paint/ready-to-use/Edge-Box-10L-Brown-Main-View.webp";
 import TransferImg from "@/public/products/line-markers/paint/ready-to-use/Transfer-10L-1.webp";
-import { ProductSpecDescriptions } from "../../../product-spec-descriptions";
-import { ProductFeatures } from "../../../product-features";
 import { ProductType } from "@/lib/types/product";
 import { EquipmentBrand } from "@/lib/types/brands";
 import { LineMarkerPaintSpecifications } from "@/lib/products/line-marker-specifications/paint-specifications";

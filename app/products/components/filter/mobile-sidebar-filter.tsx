@@ -2,7 +2,7 @@
 
 import { Dialog, Transition, DialogPanel, TransitionChild } from "@headlessui/react";
 
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { usePathname } from "next/navigation";
 
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -12,12 +12,11 @@ import { ProductFilterContent } from "./product-filter-content";
 
 export default function MobileSidebarFilter() {
     const pathname = usePathname();
+    return <MobileSidebarFilterContent key={pathname} />;
+}
 
+function MobileSidebarFilterContent() {
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        setIsOpen(false);
-    }, [pathname]);
 
     return (
         <div className="relative flex lg:hidden">
@@ -26,18 +25,7 @@ export default function MobileSidebarFilter() {
                 type="button"
                 onClick={() => setIsOpen(true)}
                 aria-label="Open filters"
-                className="
-                    fixed bottom-4 left-4 z-50
-                    flex h-11 w-11 items-center justify-center
-                    rounded-full
-                    border border-border
-                    bg-card
-                    text-card-foreground
-                    shadow-lg
-                    transition
-                    hover:bg-accent
-                    hover:text-accent-foreground
-                "
+                className="fixed bottom-4 left-4 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card text-card-foreground shadow-lg transition hover:bg-accent hover:text-accent-foreground"
             >
                 <AiFillFilter size={20} />
             </button>
@@ -76,16 +64,7 @@ export default function MobileSidebarFilter() {
                                     type="button"
                                     onClick={() => setIsOpen(false)}
                                     aria-label="Close filters"
-                                    className="
-                                        flex h-9 w-9 items-center justify-center
-                                        rounded-full
-                                        border border-border
-                                        bg-background
-                                        text-foreground
-                                        transition
-                                        hover:bg-accent
-                                        hover:text-accent-foreground
-                                    "
+                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background text-foreground transition hover:bg-accent hover:text-accent-foreground"
                                 >
                                     <XMarkIcon className="h-5 w-5" />
                                 </button>

@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-export type CookieConsentType = "all" | "essential" | "rejected" | null;
+type CookieConsentType = "all" | "essential" | "rejected" | null;
 
 const CURRENT_POLICY_VERSION = 1;
 

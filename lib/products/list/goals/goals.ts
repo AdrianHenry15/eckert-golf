@@ -1,4 +1,3 @@
-import Cyclone8000Img from "@/public/products/debris-blowers/cyclone-8000.webp";
 import FFTG1Img from "@/public/products/goals/fftg-1.jpg";
 import FFTG2Img from "@/public/products/goals/fftg-2.jpg";
 import FTGImg from "@/public/products/goals/ftg.jpg";
