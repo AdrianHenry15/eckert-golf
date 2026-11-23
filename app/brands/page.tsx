@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRightIcon } from "@heroicons/react/24/outline";
 
-import { brands } from "@/lib/products/brands";
-import { brandHeroes } from "@/lib/products/brand-heroes";
-import { PageHero } from "@/app/components/home-splash";
+import { brands } from "@/features/catalog/config/brands";
+import { brandHeroes } from "@/features/catalog/config/brand-heroes";
 import DefaultHero from "@/public/splash/turf-equipment-hero.webp";
+import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
     title: "Equipment Brands",

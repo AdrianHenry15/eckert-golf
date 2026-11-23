@@ -1,15 +1,14 @@
-import type { Metadata } from "next";
-import Product from "@/app/products/[productId]/components/product";
-import RelatedProducts from "./components/related-products";
-import { notFound } from "next/navigation";
-import { brands } from "@/lib/products/brands";
-import { SITE_ORIGIN } from "@/lib/site";
+import Product from "@/features/catalog/components/product-detail/product";
+import RelatedProducts from "@/features/catalog/components/product-detail/related-products";
+import DennisCassettes from "@/features/catalog/components/dennis-cassettes";
+import ProductBuyingGuide from "@/features/catalog/components/product-buying-guide";
 import { StaticImageData } from "next/image";
-import DennisCassettes from "@/components/products/dennis-cassettes";
-import Link from "next/link";
-import ProductBuyingGuide from "@/components/products/product-buying-guide";
-import { getCatalogProductById } from "@/lib/products/catalog";
-
+import { Metadata } from "next";
+import { getCatalogProductById, getCatalogProducts } from "@/features/catalog/server/catalog";
+import { notFound } from "next/navigation";
+import { brands } from "@/features/catalog/config/brands";
+import { SITE_ORIGIN } from "@/lib/site";
+import { getRelatedProducts } from "@/features/catalog/helpers/get-related-products";
 interface ProductPageProps {
     params: Promise<{
         productId: string;
@@ -88,6 +87,9 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
     const product = await getCatalogProductById(productId);
     if (!product) notFound();
 
+    const candidates = await getCatalogProducts();
+    const relatedProducts = getRelatedProducts(product, candidates);
+
     const brand = brands.find((item) => item.key === product.brand);
     const structuredData = {
         "@context": "https://schema.org",
@@ -99,28 +101,23 @@ export default async function ProductPage({ params }: { params: Promise<{ produc
         image: product.images.map((image) => new URL(typeof image === "string" ? image : image.src, SITE_ORIGIN).href),
     };
     return (
-        <div className="flex relative flex-col items-center w-full">
+        <main className="w-full bg-muted text-foreground">
             <script
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+                }}
             />
-            <Product productId={productId} />
-            {["mower-1", "mower-2"].includes(productId) && (
-                <div className="mx-auto w-full max-w-7xl px-6 py-12">
-                    <DennisCassettes productId={productId} />
 
-                    <Link
-                        href="/brands/dennis#dennis-cassettes"
-                        className="mt-5 inline-block text-sm font-semibold text-primary underline underline-offset-4"
-                    >
-                        Explore Dennis equipment and cassette options
-                    </Link>
-                </div>
-            )}
-            <div className="mx-auto w-full max-w-7xl px-6 pb-12">
+            <div className="mx-auto w-full max-w-7xl space-y-10 px-6 py-10 sm:py-14">
+                <Product product={product} />
+
+                {["mower-1", "mower-2"].includes(product.id) && <DennisCassettes productId={product.id} />}
+
                 <ProductBuyingGuide product={product} />
+
+                <RelatedProducts products={relatedProducts} />
             </div>
-            <RelatedProducts productId={productId} />
-        </div>
+        </main>
     );
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
-import { EventSections } from "../components/featured-events/featured-events";
+import { EventSections } from "@/features/events/components/featured-events";
+import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
     title: "Events | EGS Equipment",

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getCatalogProducts, type CatalogFilters } from "@/lib/products/catalog";
+import { getCatalogProducts, type CatalogFilters } from "@/features/catalog/server/catalog";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);

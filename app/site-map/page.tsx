@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { brands } from "@/lib/products/brands";
+import { brands } from "@/features/catalog/config/brands";
 import { MAIN_CATEGORIES } from "@/lib/domain/categories";
 
 export const metadata: Metadata = {

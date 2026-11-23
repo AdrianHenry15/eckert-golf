@@ -6,10 +6,10 @@ import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ModalRoot from "@/components/modals/modal-root";
 import CookieConsentCard from "@/components/cookie-consent-card";
-import GlobalOptionsWidget from "@/app/components/global-options-widget";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { SITE_ORIGIN } from "@/lib/site";
+import GlobalOptionsWidget from "@/components/settings/global-options-widget";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -113,7 +113,7 @@ export default async function RootLayout({
                     <Toaster />
                     <a
                         href="#page-content"
-                        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+                        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
                     >
                         Skip to content
                     </a>

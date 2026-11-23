@@ -1,10 +1,9 @@
-import type { Metadata } from "next";
-import PoweredBy from "@/app/components/powered-by";
-import FeaturedProducts from "./components/featured-products/featured-products";
-import FeaturedEvents from "./components/featured-events/featured-events";
-import EquipmentDirectory from "./components/equipment-directory";
-import HomeSplash from "./components/home-splash";
-
+import HomeSplash from "@/features/home/components/home-splash";
+import EquipmentDirectory from "@/features/home/components/equipment-directory";
+import BrandStrip from "@/features/catalog/components/brand-strip";
+import FeaturedProducts from "@/features/catalog/components/featured-products/featured-products";
+import FeaturedEvents from "@/features/events/components/featured-events";
+import { Metadata } from "next";
 export const metadata: Metadata = {
     alternates: { canonical: "/" },
 };
@@ -16,7 +15,7 @@ export default function Home() {
             <EquipmentDirectory />
 
             <section className="border-t border-border">
-                <PoweredBy />
+                <BrandStrip />
             </section>
 
             <section className="border-t border-border">

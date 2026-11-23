@@ -1,11 +1,10 @@
+import { PageHero } from "@/components/layout/page-hero";
+
+import FilterSidebar from "@/features/catalog/components/filter/filter-sidebar";
+import MobileSidebarFilter from "@/features/catalog/components/filter/mobile-sidebar-filter";
+import ProductList, { type CatalogSearchParams } from "@/features/catalog/components/product-list";
+import { Metadata } from "next";
 import Link from "next/link";
-import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
-
-import FilterSidebar from "./components/filter/filter-sidebar";
-import MobileSidebarFilter from "./components/filter/mobile-sidebar-filter";
-import ProductList, { type CatalogSearchParams } from "./components/product-list";
-
 export const metadata: Metadata = {
     title: "Professional Turf & Sports Field Equipment",
     description:

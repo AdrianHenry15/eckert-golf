@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
 import PartsForm from "@/components/forms/parts-form";
+import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
     title: "Parts & Service Support | EGS Equipment",

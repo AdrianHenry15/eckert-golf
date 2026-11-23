@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getCatalogProductById } from "@/lib/products/catalog";
+import { getCatalogProductById } from "@/features/catalog/server/catalog";
 
 interface Props {
     params: Promise<{ slug: string }>;
