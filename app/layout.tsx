@@ -2,17 +2,14 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/app/globals.css";
 
-import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity/visual-editing";
-
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import ModalRoot from "@/components/modals/modal-root";
 import CookieConsentCard from "@/components/cookie-consent-card";
-import GlobalOptionsWidget from "@/app/components/global-options-widget";
 import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "react-hot-toast";
 import { SITE_ORIGIN } from "@/lib/site";
+import GlobalOptionsWidget from "@/components/settings/global-options-widget";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -86,18 +83,37 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const isDraftMode = (await draftMode()).isEnabled;
-
     return (
         <html lang="en" suppressHydrationWarning>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} min-h-screen bg-background text-foreground antialiased`}
             >
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: JSON.stringify({
+                            "@context": "https://schema.org",
+                            "@type": "Organization",
+                            name: "Eckert Golf Sales, Inc.",
+                            alternateName: "EGS Equipment",
+                            url: SITE_ORIGIN,
+                            telephone: "+1-407-629-7968",
+                            address: {
+                                "@type": "PostalAddress",
+                                streetAddress: "5415 Lake Howell Road #190",
+                                addressLocality: "Winter Park",
+                                addressRegion: "FL",
+                                postalCode: "32792",
+                                addressCountry: "US",
+                            },
+                        }).replace(/</g, "\\u003c"),
+                    }}
+                />
                 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
                     <Toaster />
                     <a
                         href="#page-content"
-                        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
+                        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-100 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-primary-foreground"
                     >
                         Skip to content
                     </a>
@@ -107,7 +123,6 @@ export default async function RootLayout({
                     </div>
                     <ModalRoot />
                     <CookieConsentCard />
-                    {isDraftMode && <VisualEditing />}
                     <GlobalOptionsWidget />
                     <Footer />
                 </ThemeProvider>

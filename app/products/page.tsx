@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
+import { PageHero } from "@/components/layout/page-hero";
 
-import FilterSidebar from "./components/filter/filter-sidebar";
-import MobileSidebarFilter from "./components/filter/mobile-sidebar-filter";
-import ProductList, { type CatalogSearchParams } from "./components/product-list";
-
+import FilterSidebar from "@/features/catalog/components/filter/filter-sidebar";
+import MobileSidebarFilter from "@/features/catalog/components/filter/mobile-sidebar-filter";
+import ProductList, { type CatalogSearchParams } from "@/features/catalog/components/product-list";
+import { Metadata } from "next";
+import Link from "next/link";
 export const metadata: Metadata = {
     title: "Professional Turf & Sports Field Equipment",
     description:
@@ -61,6 +61,11 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
                 accent="equipment"
                 description="Browse professional turf, sports field, and grounds maintenance equipment."
             />
+            <nav aria-label="Browse equipment brands" className="mx-auto max-w-screen-2xl px-6 py-4">
+                <Link href="/brands" className="font-semibold text-primary underline underline-offset-4">
+                    Shop by brand
+                </Link>
+            </nav>
             <div className="mx-auto flex w-full max-w-screen-2xl">
                 <MobileSidebarFilter />
                 <FilterSidebar />

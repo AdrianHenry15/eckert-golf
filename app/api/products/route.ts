@@ -1,27 +1,20 @@
-import { getFilteredProducts, getProducts } from "@/sanity/actions/products";
 import { NextResponse } from "next/server";
+import { getCatalogProducts, type CatalogFilters } from "@/features/catalog/server/catalog";
 
-export async function GET(req: Request) {
-    const { searchParams } = new URL(req.url);
+export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
 
-    const category = searchParams.get("category") || undefined;
-    const brand = searchParams.get("brand") || undefined;
-    const tag = searchParams.get("tag") || undefined;
+    const filters: CatalogFilters = {};
 
-    // No filters → return all products
-    if (!category && !brand && !tag) {
-        const products = await getProducts();
-        return NextResponse.json(products);
+    for (const key of ["brand", "category", "tag"] as const) {
+        const value = searchParams.get(key)?.trim();
+
+        if (value) {
+            filters[key] = value;
+        }
     }
 
-    // Build params WITHOUT undefined values
-    const filters: { category?: string; brand?: string; tag?: string } = {};
-
-    if (category) filters.category = category;
-    if (brand) filters.brand = brand;
-    if (tag) filters.tag = tag;
-
-    const products = await getFilteredProducts(filters);
+    const products = await getCatalogProducts(filters);
 
     return NextResponse.json(products);
 }

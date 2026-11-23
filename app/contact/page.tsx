@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
 import ContactForm from "@/components/forms/contact-form";
-import { allProducts } from "@/lib/products/list/product-list";
+import { PageHero } from "@/components/layout/page-hero";
+import { getCatalogProductById } from "@/features/catalog/server/catalog";
 
 export const metadata: Metadata = {
     title: "Contact EGS Equipment | Sales, Support & Quotes",
@@ -31,8 +31,10 @@ export default async function ContactPage({
     searchParams: Promise<{ product?: string | string[] }>;
 }) {
     const { product: productId } = await searchParams;
-    const quoteProduct = allProducts.find(({ id }) => id === productId)?.name;
 
+    const selectedProduct = typeof productId === "string" ? await getCatalogProductById(productId) : null;
+
+    const quoteProduct = selectedProduct?.name;
     return (
         <main className="w-full bg-background text-foreground">
             <PageHero

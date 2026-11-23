@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { brands } from "@/features/catalog/config/brands";
 import { MAIN_CATEGORIES } from "@/lib/domain/categories";
 
 export const metadata: Metadata = {
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const groups = [
+    { title: "Brands", links: brands.map(({ slug, name }) => ({ href: `/brands/${slug}`, label: name })) },
     {
         title: "Equipment",
         links: [

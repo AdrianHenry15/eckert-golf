@@ -1,14 +1,14 @@
 import { create } from "zustand";
 import { ConfirmModalPayload, LinkConfirmationPayload, SearchModalPayload, SuccessModalPayload } from "./modal-types";
 
-export type ModalPayloadMap = {
+type ModalPayloadMap = {
     confirmation: ConfirmModalPayload;
     success: SuccessModalPayload;
     link_confirmation: LinkConfirmationPayload;
     search: SearchModalPayload;
 };
 
-export type ModalType = keyof ModalPayloadMap | null;
+type ModalType = keyof ModalPayloadMap | null;
 
 interface ModalState<T extends ModalType = ModalType> {
     type: T;

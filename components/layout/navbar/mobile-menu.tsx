@@ -3,7 +3,7 @@
 import { Dialog, Transition, TransitionChild } from "@headlessui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -20,6 +20,12 @@ const ICON_BUTTON_CLASSES =
 export default function MobileMenu() {
     const pathname = usePathname();
 
+    return <MobileMenuContent key={pathname} />;
+}
+
+function MobileMenuContent() {
+    const pathname = usePathname();
+
     const [isOpen, setIsOpen] = useState(false);
     const [productsMenuOpen, setProductsMenuOpen] = useState(false);
 
@@ -27,10 +33,6 @@ export default function MobileMenu() {
         setIsOpen(false);
         setProductsMenuOpen(false);
     };
-
-    useEffect(() => {
-        closeMobileMenu();
-    }, [pathname]);
 
     const renderNavMenu = () => {
         return NavMenu.map((item) => {
@@ -58,7 +60,7 @@ export default function MobileMenu() {
 
                         {productsMenuOpen && (
                             <div className="mt-2">
-                                <ProductsNavMenu setProductsMenuOpen={() => setProductsMenuOpen(false)} />
+                                <ProductsNavMenu setProductsMenuOpen={closeMobileMenu} />
                             </div>
                         )}
                     </li>
@@ -94,13 +96,12 @@ export default function MobileMenu() {
                 >
                     <Bars3Icon className="h-5 w-5" />
                 </button>
-
             </div>
 
             <AnimatePresence>
                 {isOpen && (
                     <Transition show={isOpen}>
-                        <Dialog onClose={closeMobileMenu} className="relative z-[9050]">
+                        <Dialog onClose={closeMobileMenu} className="relative z-9050">
                             <TransitionChild
                                 as={Fragment}
                                 enter="transition-opacity ease-in-out duration-150"
@@ -122,10 +123,10 @@ export default function MobileMenu() {
                                     stiffness: 320,
                                     damping: 34,
                                 }}
-                                className="fixed inset-y-0 right-0 flex h-dvh w-full flex-col border-l border-border bg-card text-card-foreground shadow-2xl sm:w-[375px]"
+                                className="fixed inset-y-0 right-0 flex h-dvh w-full flex-col border-l border-border bg-card text-card-foreground shadow-2xl sm:w-93.75"
                             >
                                 <div className="flex items-center justify-between border-b border-border px-4 py-4">
-                                    <span className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+                                    <span className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
                                         Menu
                                     </span>
 

@@ -1,15 +1,14 @@
-import { getProductBySlug } from "@/sanity/actions/products";
 import { NextResponse } from "next/server";
+import { getCatalogProductById } from "@/features/catalog/server/catalog";
 
-interface Params {
-    params: Promise<{
-        slug: string;
-    }>;
+interface Props {
+    params: Promise<{ slug: string }>;
 }
 
-export async function GET(_: Request, { params }: Params) {
+export async function GET(_: Request, { params }: Props) {
     const { slug } = await params;
-    const product = await getProductBySlug(slug);
+
+    const product = await getCatalogProductById(slug);
 
     if (!product) {
         return NextResponse.json({ error: "Product not found" }, { status: 404 });

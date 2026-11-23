@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
 import About from "@/components/layout/about";
 import AboutImage from "@/public/splash/grounds-equipment.webp";
+import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
     title: "About EGS Equipment | Our Story & Mission",

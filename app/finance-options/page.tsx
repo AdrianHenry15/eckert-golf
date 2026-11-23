@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/app/components/home-splash";
 import FinanceOptions from "@/components/layout/finance-options";
 import CanonFinanceImage from "@/public/logos/canon-logo.png";
+import { PageHero } from "@/components/layout/page-hero";
 
 export const metadata: Metadata = {
     title: "Financing Options | EGS Equipment",

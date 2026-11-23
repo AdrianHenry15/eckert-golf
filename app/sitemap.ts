@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
-import { allProducts } from "@/lib/products/list/product-list";
+import { getCatalogProducts } from "@/features/catalog/server/catalog";
+import { brands } from "@/features/catalog/config/brands";
 import { SITE_ORIGIN } from "@/lib/site";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const pages = [
         "/",
         "/about",
@@ -15,9 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         "/accessibility",
         "/site-map",
     ];
-    const products = allProducts.map(({ id }) => `/products/${encodeURIComponent(id)}`);
+    const catalogProducts = await getCatalogProducts();
 
-    return [...new Set([...pages, ...products])].map((path) => ({
-        url: new URL(path, SITE_ORIGIN).href,
-    }));
+    const products = catalogProducts.map(({ id }) => `/products/${encodeURIComponent(id)}`);
+    return [...new Set([...pages, "/brands", ...brands.map(({ slug }) => `/brands/${slug}`), ...products])].map(
+        (path) => ({
+            url: new URL(path, SITE_ORIGIN).href,
+        }),
+    );
 }
