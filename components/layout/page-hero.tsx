@@ -38,7 +38,7 @@ export function PageHero({
                 fill
                 preload
                 sizes="100vw"
-                quality={80}
+                quality={75}
                 className="-z-20 object-cover"
                 style={{ objectPosition: imagePosition }}
             />
