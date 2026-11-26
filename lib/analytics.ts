@@ -35,8 +35,10 @@ export function setAnalyticsConsent(allowed: boolean) {
     if (!analyticsWindow.gtag) {
         analyticsWindow.dataLayer ??= [];
 
-        analyticsWindow.gtag = function (...args: unknown[]) {
-            analyticsWindow.dataLayer!.push(args);
+        analyticsWindow.gtag = function () {
+            // Google expects the function's Arguments object as one queue entry.
+            // eslint-disable-next-line prefer-rest-params
+            analyticsWindow.dataLayer!.push(arguments);
         };
     }
 
