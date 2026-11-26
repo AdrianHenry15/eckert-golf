@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "@/app/globals.css";
+import GoogleAnalytics from "@/components/analytics/google-analytics";
 
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
@@ -123,6 +124,7 @@ export default async function RootLayout({
                     </div>
                     <ModalRoot />
                     <CookieConsentCard />
+                    <GoogleAnalytics />
                     <GlobalOptionsWidget />
                     <Footer />
                 </ThemeProvider>

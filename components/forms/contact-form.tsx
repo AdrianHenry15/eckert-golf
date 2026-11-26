@@ -3,21 +3,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
+import { useRef } from "react";
+
+import TurnstileField, { type TurnstileInstance } from "@/components/forms/turnstile-field";
 
 import Logo from "@/public/logos/EGS1.png";
 import Button from "../button";
 import Textarea from "./textarea";
 import Input from "./input";
 import { useModalStore } from "@/stores/modal-store/modal-store";
+import { trackEvent } from "@/lib/analytics";
+import { submitWebsiteRequest } from "@/lib/submit-website-request";
 
 const ContactForm = ({ quoteProduct }: { quoteProduct: string | undefined }) => {
     const { openModal, setLoading, closeModal } = useModalStore();
-
-    const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID as string;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID as string;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_KEY as string;
+    const turnstileRef = useRef<TurnstileInstance | null>(null);
+    const submittingRef = useRef(false);
 
     const { handleSubmit, getValues, control } = useForm({
         defaultValues: {
@@ -40,30 +42,44 @@ const ContactForm = ({ quoteProduct }: { quoteProduct: string | undefined }) => 
     };
 
     const submitEstimate = async () => {
+        if (submittingRef.current) return;
+
+        const turnstileToken = turnstileRef.current?.getResponse();
+
+        if (!turnstileToken || turnstileRef.current?.isExpired()) {
+            closeModal();
+            turnstileRef.current?.reset();
+            toast.error("Please complete the security verification, then submit again.");
+            return;
+        }
+
+        submittingRef.current = true;
+        setLoading(true);
+
         try {
-            setLoading(true);
-            const formValues = getValues();
-
-            await emailjs.send(
-                SERVICE_ID,
-                TEMPLATE_ID,
-                {
-                    ...formValues,
-                    comment: quoteProduct
-                        ? [`Quote request for: ${quoteProduct}`, formValues.comment].filter(Boolean).join("\n\n")
-                        : formValues.comment,
+            await submitWebsiteRequest({
+                formType: "contact",
+                turnstileToken,
+                values: {
+                    ...getValues(),
+                    quoteProduct: quoteProduct ?? "",
                 },
-                PUBLIC_KEY,
-            );
+            });
 
-            toast.success("Your request was submitted. Our team will be in touch.");
+            trackEvent("generate_lead", {
+                form_name: "contact_request",
+            });
 
             closeModal();
+            toast.success("Your request was submitted. Our team will be in touch.");
         } catch (error) {
-            toast.error("There was an error submitting your estimate. Please try again.");
-            throw error;
+            closeModal();
+
+            toast.error(error instanceof Error ? error.message : "Your request could not be sent. Please try again.");
         } finally {
+            submittingRef.current = false;
             setLoading(false);
+            turnstileRef.current?.reset();
         }
     };
 
@@ -77,7 +93,13 @@ const ContactForm = ({ quoteProduct }: { quoteProduct: string | undefined }) => 
                 </div>
 
                 {/* FORM */}
-                <form className="w-full self-center md:w-2/3" noValidate onSubmit={handleSubmit(onSubmit)}>
+                <form
+                    className="w-full self-center md:w-2/3"
+                    noValidate
+                    onSubmit={(e) => {
+                        void handleSubmit(onSubmit)(e);
+                    }}
+                >
                     {quoteProduct && (
                         <p className="mb-4 rounded-md border border-border bg-muted p-3 text-sm font-semibold">
                             Quote request for {quoteProduct}
@@ -137,6 +159,7 @@ const ContactForm = ({ quoteProduct }: { quoteProduct: string | undefined }) => 
                         </Link>
                         .
                     </p>
+                    <TurnstileField ref={turnstileRef} action="contact" />
 
                     <div className="my-10">
                         <Button submit themed name="Submit Request" className="w-full justify-center" />

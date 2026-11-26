@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 import toast from "react-hot-toast";
+import { useRef } from "react";
+
+import TurnstileField, { type TurnstileInstance } from "@/components/forms/turnstile-field";
 
 import Logo from "@/public/logos/EGS1.png";
 import Button from "../button";
@@ -13,15 +15,16 @@ import Textarea from "./textarea";
 import Input from "./input";
 import { Loader } from "../loader";
 import { useModalStore } from "@/stores/modal-store/modal-store";
+import { trackEvent } from "@/lib/analytics";
+import { submitWebsiteRequest } from "@/lib/submit-website-request";
 
 const PartsForm = () => {
     const { openModal, closeModal } = useModalStore();
 
     const [loading, setLoading] = useState(false);
 
-    const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID as string;
-    const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID as string;
-    const PUBLIC_KEY = process.env.NEXT_PUBLIC_KEY as string;
+    const turnstileRef = useRef<TurnstileInstance | null>(null);
+    const submittingRef = useRef(false);
 
     const { handleSubmit, getValues, control } = useForm({
         defaultValues: {
@@ -39,28 +42,43 @@ const PartsForm = () => {
     });
 
     const sendEstimate = async () => {
+        if (submittingRef.current) return;
+
+        const turnstileToken = turnstileRef.current?.getResponse();
+
+        if (!turnstileToken || turnstileRef.current?.isExpired()) {
+            closeModal();
+            turnstileRef.current?.reset();
+            toast.error("Please complete the security verification, then submit again.");
+            return;
+        }
+
+        submittingRef.current = true;
         setLoading(true);
 
-        const formValues = getValues();
-
         try {
-            await emailjs.send(
-                SERVICE_ID,
-                TEMPLATE_ID,
-                {
-                    ...formValues,
+            await submitWebsiteRequest({
+                formType: "parts",
+                turnstileToken,
+                values: {
+                    ...getValues(),
                 },
-                PUBLIC_KEY,
-            );
+            });
 
-            toast.success("Your parts request was submitted. Our team will be in touch.");
+            trackEvent("generate_lead", {
+                form_name: "parts_request",
+            });
 
             closeModal();
+            toast.success("Your parts request was submitted. Our team will be in touch.");
         } catch (error) {
-            toast.error("There was an error submitting your request. Please try again.");
-            throw error;
+            closeModal();
+
+            toast.error(error instanceof Error ? error.message : "Your request could not be sent. Please try again.");
         } finally {
+            submittingRef.current = false;
             setLoading(false);
+            turnstileRef.current?.reset();
         }
     };
 
@@ -88,7 +106,13 @@ const PartsForm = () => {
                 </div>
 
                 {/* FORM */}
-                <form className="w-full self-center md:w-2/3" noValidate onSubmit={handleSubmit(onSubmit)}>
+                <form
+                    className="w-full self-center md:w-2/3"
+                    noValidate
+                    onSubmit={(e) => {
+                        void handleSubmit(onSubmit)(e);
+                    }}
+                >
                     <h5 className="text-lg font-semibold text-foreground">Contact Info</h5>
 
                     <p className="mb-4 text-sm text-muted-foreground">Fields marked * are required.</p>
@@ -197,6 +221,8 @@ const PartsForm = () => {
                         </Link>
                         .
                     </p>
+
+                    <TurnstileField ref={turnstileRef} action="parts" />
 
                     <div className="my-10">
                         <Button submit name="Submit Request" className="w-full justify-center" />
